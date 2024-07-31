@@ -11,7 +11,7 @@ import { NaPipe } from '../../../Pipe/na.pipe';
   styleUrl: './pipe.component.css'
 })
 export class PipeComponent {
-  firstName: string = "this is a book";
+  firstName: string = "this  is a book";
 
   currentDate: Date = new Date();
   currentTime: Observable<Date> = new Observable<Date>;
