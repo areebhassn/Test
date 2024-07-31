@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-4">
+        One way DataBinding: form .ts to .html
+    </div>
+    <div class="col-4">
+
+    </div>
+    <div class="col-4">
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-4">
+        Interpolation
+        <div class="row">
+            <div class="col-4">
+                <h4>{{courseName}}</h4>
+                <input type="text" value="{{courseName}}" placeholder="Please Enter text">
+                <input type="{{inputType}}" value="{{courseName}}" placeholder="Please Enter text">
+            </div>
+            <div class="col-4">
+                Property Binding
+                <div [class]="myClassName">Danger</div>
+                <input type="text" [value]="courseName">
+                <input [type]="inputType">
+            </div>
+            <div class="col-4">
+                <button class="btn btn-success" (click)="showAlert('Wellcom to angular 18')"> Show Welcome</button>
+                <span (click)="showAlert('i am span')">Click spam</span>
+                <button class="btn btn-success" (click)="chnageCoursName()"> Change Course</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <input type="text" [(ngModel)]="courseName"> - {{courseName}}
+        <input type="checkbox" [(ngModel)]="isChecked">
+        <select [(ngModel)]="selectStateName">
+            <option value="">Select</option>
+            <option value="KPK">KPK</option>
+            <option value="Sindh">Sindh</option>
+            <option value="GB">GB</option>
+        </select>
+    </div>
+    <div class="col-6">
+        <h2>{{fName()}}</h2>
+    </div>
+</div>

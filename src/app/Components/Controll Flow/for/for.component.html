@@ -1,0 +1,108 @@
+<div class="container">
+    <div class="row mt-2 p-2 bg-secondary text-white rounded d-flex flex-wrap">
+        <h1>for and Switch case</h1>
+        
+        <button class="btn btn-primary" [routerLink]="['/attribute-directive']">Go to Attribute-Directive</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <input type="text" [(ngModel)]="dayNumber">
+    </div>
+    <div class="col-3">
+        Day name is : 
+        @switch (dayNumber) {
+            @case('1'){
+                <span>Monday</span>
+            }
+            @case('2'){
+                <span>Tuesday</span>
+            }
+            @case('3'){
+                <span>Wednesday</span>
+            }
+            @case('4'){
+                <span>Thursday</span>
+            }
+            @case('5'){
+                <span>Friday</span>
+            }
+            @case('6'){
+                <span>Saturday</span>
+            }
+            @case('7'){
+                <span>Sunday</span>
+            }
+            @default {
+                <span>Wrong Entry</span>
+            }
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <ul>
+            @for (item of cityArray; track $index) {
+                <li>{{item}}</li>
+            }
+            
+        </ul>
+    </div>
+    <div class="col-3">
+        @for (item of cityArray; track $index) {
+            <div>{{item}}</div>
+        }
+    </div>
+    <div class="col-3">
+        <select>
+            <option value="">Select City</option>
+            @for (item of cityArray; track $index) {
+                <option value="{{item}}">{{item}}</option>
+            }            
+        </select>
+    </div>
+    <div class="col-3">
+        <select>
+            <option value="">Select Student</option>
+            @for (item of studentList; track $index) {
+                <option value="{{item.id}}">{{item.name}}</option>
+            } 
+        </select>
+    </div>
+</div>
+<div class="row mt-2 p-2 d-flex flex-wrap">
+    <div class="col-12">
+        <table class="table table-bordered table-responsive">
+            <thead>
+                <tr>
+                    <th>
+                        Serial No.
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        City
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (student of studentList; track $index) {
+                    <tr>
+                        <td>{{$index + 1}}</td>
+                        <td>{{student.name}}</td>
+                        <td>{{student.city}}</td>
+                        <td>
+                            <span *ngIf="student.isAtive">Active</span>
+                            <span *ngIf="!student.isAtive">Deactive</span>
+                        </td>
+                    </tr>                   
+                    
+                }                 
+            </tbody>
+        </table>
+    </div>
+</div>

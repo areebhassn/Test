@@ -1,0 +1,137 @@
+<div class="container">
+    <div class="row mt-2 p-2 bg-secondary text-white rounded d-flex flex-wrap">
+        <h1>if else</h1>
+        <button class="btn btn-primary" [routerLink]="['/attribute-directive']">Go to Attribute-Directive</button>
+    </div>
+    <div class="row mt-2 p-2 d-flex flex-wrap">
+        <div class="col-3">
+            @if(isDiv1Visible == true) {
+            <div class="bg-danger p-3 text-center">
+                <h4>
+                    DIV - 1
+                </h4>
+            </div>
+            }
+        </div>
+        <div class="col-3">
+            @if (ifWarningDivVisisble) {
+                <div  class="bg-success p-3 text-center">
+                    <h4>DIV - 2</h4>
+                </div>
+            }
+            @else {
+                <div  class="bg-warning p-3 text-center">
+                    <h4>DIV - 2</h4>
+                </div>
+            }            
+            
+        </div>
+        <div class="col-3">
+            @if(num1 == num2) {
+                <div class="bg-secondary p-3 text-center">
+                    <h4>DIV - 3</h4>
+                </div>
+            }            
+        </div>
+        <div class="col-3">            
+            @if(selectedState== 'Active'){
+                <div class="bg-primary p-3 text-center">
+                    <h4>DIV - 4 is Active</h4>
+                </div>
+            }
+            @else if(selectedState== 'De-active'){
+                <div class="bg-primary p-3 text-center">
+                    <h4>DIV - 4 is De-active</h4>
+                </div>
+            }
+            @else if(selectedState== 'Pending'){
+                <div class="bg-primary p-3 text-center">
+                    <h4>DIV - 4 is Pending</h4>
+                </div>
+            }@else {
+                <div class="bg-danger p-3 text-center">
+                    <h4>Select Value</h4>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row mt-2 p-2 d-flex flex-wrap">
+        <div class="col-3 text-center">
+            <button class="btn btn-danger" (click)="hideDiv1()">Hide</button>
+            <button class="btn btn-primary mx-2" (click)="showDiv1()">Show</button>
+        </div>
+        <div class="col-3 text-center">
+            <button class="btn btn-success" (click)="toggleDiv2()">Toggle</button>
+        </div>
+        <div class="col-3 text-center">
+            <div style="display: flex; align-items: center;">
+                <input type="text" [(ngModel)]="num1" placeholder="Num - 1">
+                <input type="text" [(ngModel)]="num2" placeholder="Num - 2">
+            </div>
+        </div>
+        <div class="col-3 text-center">
+            <input [(ngModel)]="isActive" type="checkbox" name="" id="">
+            <select [(ngModel)]="selectedState">
+                <option value="">Select</option>
+                <option value="Active">Active</option>
+                <option value="De-active">De-active</option>
+                <option value="Pending">Pending</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mt-2 p-2 d-flex flex-wrap">
+        <div class="col-3">
+            <ul>
+                <li *ngFor="let city of cityArray">{{city}}</li>
+            </ul>
+        </div>
+        <div class="col-3">
+            <div *ngFor="let city of cityArray">{{city}}</div>
+        </div>
+        <div class="col-3">
+            <select>
+                <option value="">Select</option>
+                <option *ngFor="let city of cityArray" value="{{city}}">{{city}}</option>
+            </select>
+        </div>
+        <div class="col-3">
+            <select>
+                <option value="0">Select</option>
+                <option *ngFor="let student of studentList" [value]="student.id">{{student.name}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mt-2 p-2 d-flex flex-wrap">
+        <div class="col-12">
+            <table class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <th>
+                            Serial No.
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            City
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let student of studentList let srNo = index">
+                        <td>{{srNo + 1}}</td>
+                        <td>{{student.name}}</td>
+                        <td>{{student.city}}</td>
+                        <td>
+                            <span *ngIf="student.isAtive">Active</span>
+                            <span *ngIf="!student.isAtive">Deactive</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+<div class="container">
+    <div class="row mt-2 p-2 bg-secondary text-white rounded d-flex flex-wrap">
+        <h1>Attribute Directive</h1>
+        <p>#ngclass, *ngStyle</p>
+        <button class="btn btn-primary" (click)="navigatetoStructuralMethod()" >Go to structural-Directive</button>
+    </div>
+
+    <div class="row mt-2 p-2 d-flex flex-wrap">
+        <div class="col-3">
+            <div [ngClass]="div1BgColor" class="p-3 text-center">
+                <h4>
+                    DIV - 1
+                </h4>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="p-3 text-center" [ngClass]="isDiv2Active == true? 'bg-success':'bg-warning'">
+                <h4>DIV - 2</h4>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="p-3 text-center" [ngClass]="num1 == num2? 'bg-secondary text-white':'bg-danger text-primary'">
+                <h4>DIV - 3</h4>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="p-3 text-center" [ngClass]="idActive == true ? 'bg-primary':'bg-danger text-primary'">
+                <h4>DIV - 4</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-2 p-2 d-flex flex-wrap">
+        <div class="col-3 text-center">
+            <button class="btn btn-danger" (click)="addRedColor()">Add Red</button>
+            <button class="btn btn-primary mx-2" (click)="addBlueColor()">Add Blue</button>
+        </div>
+        <div class="col-3 text-center">
+            <button class="btn btn-success" (click)="togglesDiv2()">Toggle</button>
+        </div>
+        <div class="col-3 text-center">
+            <div style="display: flex; align-items: center;">
+                <input type="text" [(ngModel)]="num1" placeholder="Num - 1">
+                <input type="text" [(ngModel)]="num2" placeholder="Num - 2">
+            </div>
+        </div>
+        <div class="col-3 text-center">
+            <input [(ngModel)]="idActive" type="checkbox" name="" id="">
+            <select>
+                <option value="">Select</option>
+                <option value="KPK">KPK</option>
+                <option value="Sindh">Sindh</option>
+                <option value="GB">GB</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row mt-2 p-2 d-flex flex-wrap">
+        <div class="col-12">
+            <table class="table table-bordered table-responsive">
+                <thead>
+                    <tr>
+                        <th>
+                            Serial No.
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            City
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Total Marks
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let student of studentList let srNo = index">
+                        <td>{{srNo + 1}}</td>
+                        <td>{{student.name}}</td>
+                        <td>{{student.city}}</td>
+                        <td [ngStyle]="{'background-color': student.isAtive ? 'yellow': 'red'}">
+                            <span>{{student.isAtive ? 'Active':'Deactive'}}</span>
+                        </td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar" [ngStyle]="{'width':student.totalMarks+'%'}"></div>
+                            </div>
+                            {{student.totalMarks}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row mt-2 p-2 d-flex flex-wrap">
+        <div class="col-5">
+            
+        </div>
+        <div class="col-5">
+            <div [ngStyle]="customerStyle"></div>
+        </div>
+        <div class="col-2">
+            
+        </div>
+    </div>
+</div>
